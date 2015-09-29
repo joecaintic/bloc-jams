@@ -6,6 +6,7 @@
 
 html {
      height: 100%;
+     font-size: 100%;
  }
 
 body {
@@ -14,6 +15,9 @@ body {
     min-height: 100%;
 }
 
+body.landing {
+    background-color: rgb(58,23,63);
+}
 
 .navbar {
     padding: 0.5 rem;
@@ -49,4 +53,14 @@ body {
 
  @media (min-width: 64rem) {
    html { font-size: 120%; }
+ }
+
+ .clearfix:before,
+ .clearfix:after {
+     content: " ";
+     display: table;
+ }
+ 
+ .clearfix:after {
+     clear: both;
  }
