@@ -34,6 +34,45 @@ body.landing {
      position: relative;
      padding: 2rem;
      text-align: center;
+     var animatePoints = function() {
+ 
+     var points = document.getElementsByClassName('point');
+ 
+     var revealFirstPoint = function() {
+         points[0].style.opacity = 1;
+         points[0].style.transform = "scaleX(1) translateY(0)";
+         points[0].style.msTransform = "scaleX(1) translateY(0)";
+         points[0].style.WebkitTransform = "scaleX(1) translateY(0)";
+     };
+ 
+     var revealSecondPoint = function() {
+         points[1].style.opacity = 1;
+         points[1].style.transform = "scaleX(1) translateY(0)";
+         points[1].style.msTransform = "scaleX(1) translateY(0)";
+         points[1].style.WebkitTransform = "scaleX(1) translateY(0)";
+     };
+ 
+     var revealThirdPoint = function() {
+         points[2].style.opacity = 1;
+         points[2].style.transform = "scaleX(1) translateY(0)";
+         points[2].style.msTransform = "scaleX(1) translateY(0)";
+         points[2].style.WebkitTransform = "scaleX(1) translateY(0)";
+     };
+ 
+     revealFirstPoint();
+     revealSecondPoint();
+     revealThirdPoint();
+ 
+ };opacity: 0;
+     -webkit-transform: scaleX(0.9) translateY(3rem);
+     -moz-transform: scaleX(0.9) translateY(3rem);
+     transform: scaleX(0.9) translateY(3rem);
+     -webkit-transition: all 0.25s ease-in-out;
+     -moz-transition: all 0.25s ease-in-out;
+     transition: all 0.25s ease-in-out;
+     -webkit-transition-delay: 0.2s;
+     -moz-transition-delay: 0.2s;
+     transition-delay: 0.2s;
  }
  
  .point .point-title {
