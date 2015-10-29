@@ -30,6 +30,27 @@
      ]
  };
 
+ // 3rd Album
+ var albumBeachHouse = {
+     name: 'Bloom',
+     artist: 'Beach House',
+     label: 'Sub Pop',
+     year: '2012',
+     albumArtUrl: 'assets/images/album_covers/bloom.jpg',
+     songs: [
+         { name: 'Myth', length: '4:19' },
+         { name: 'Wild', length: '4:58' },
+         { name: 'Lazuli', length: '5:02'},
+         { name: 'Other People', length: '4:25' },
+         { name: 'The Hours', length: '4:12'},
+         { name: 'Troublemaker', length: '4:56'},
+         { name: 'New Year', length: '5:26'},
+         { name: 'Wishes', length: '4:47'},
+         { name: 'On the Sea', length: '5:32'},
+         { name: 'Irene', length: '16:57'}
+     ]
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
