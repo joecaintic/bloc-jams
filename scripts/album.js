@@ -86,6 +86,27 @@ var createSongRow = function(songNumber, songName, songLength) {
      }
  };
  
+
+
+
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
  };
+     
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+     
+index = 1;
+var albums = [albumPicasso, albumMarconi, albumBeachHouse];
+
+albumImage.addEventListener('click', function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    if (index == albums.length ) {
+        index = 0;}
+}
+        )
+     
+     
+ ;
+
+
