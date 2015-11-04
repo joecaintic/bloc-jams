@@ -87,6 +87,13 @@ var createSongRow = function(songNumber, songName, songLength) {
  };
  
 
+//function that keeps traversing the DOM upward until a parent with a specified class name is found.
+var findParentByClassName = function(childClass, parentClass) {
+    
+   var parent = document.querySelector(childClass).parentElement;
+    if (parent.className === parentClass) {return parent}
+};
+ 
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 
 var songRows = document.getElementsByClassName('album-view-song-item');
