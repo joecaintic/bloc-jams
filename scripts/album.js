@@ -90,9 +90,12 @@ var createSongRow = function(songNumber, songName, songLength) {
 //function that keeps traversing the DOM upward until a parent with a specified class name is found.
 var findParentByClassName = function(element, targetClass) {
     var currentParent = element.parentElement;
-    while (currentParent.className != targetClass) {
+    if (currentParent === undefined) {return "No parent found";}
+    while (currentParent.className !== targetClass) {
         currentParent = currentParent.parentElement;
+        if (currentParent === null) {break; return "No parent found with that class name";}
     }
+
     return currentParent;
 };
 
@@ -111,22 +114,21 @@ var getSongItem = function(element) {
             return element;
         default:
             return;
-     } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
-         songItem.innerHTML = playButtonTemplate;
-         currentlyPlayingSong = null;
-     } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
-         var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
-         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
-         songItem.innerHTML = pauseButtonTemplate;
-         currentlyPlayingSong = songItem.getAttribute('data-song-number');
-     }
-
+    }  
 };
 
  var clickHandler = function(targetElement) {
     var songItem = getSongItem(targetElement);
  
      if (currentlyPlayingSong === null) {
+         songItem.innerHTML = pauseButtonTemplate;
+         currentlyPlayingSong = songItem.getAttribute('data-song-number');
+     } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
+         songItem.innerHTML = playButtonTemplate;
+         currentlyPlayingSong = null;
+     } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
+         var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
+         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
          songItem.innerHTML = pauseButtonTemplate;
          currentlyPlayingSong = songItem.getAttribute('data-song-number');
      }
