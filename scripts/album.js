@@ -61,6 +61,7 @@ var clickHandler = function() {
                 $('.main-controls .play-pause').html(playerBarPlayButton);
                 currentSoundFile.pause();   
             }
+    }
 };
     
    var onHover = function(event) {
@@ -121,7 +122,7 @@ var clickHandler = function() {
 
         $('.currently-playing .song-name').text(currentSongFromAlbum.name);
         $('.currently-playing .artist-name').text(currentAlbum.artist);
-        $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " +                 currentAlbum.artist);
+        $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " + currentAlbum.artist);
         $('.main-controls .play-pause').html(playerBarPauseButton);
         };
  
@@ -142,12 +143,7 @@ var nextSong = function() {
     // Set a new current song
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
-
-    // Update the Player Bar information
-    $('.currently-playing .song-name').text(currentSongFromAlbum.name);
-    $('.currently-playing .artist-name').text(currentAlbum.artist);
-    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " + currentAlbum.name);
-    $('.main-controls .play-pause').html(playerBarPauseButton);
+    updatePlayerBarSong();
     
     var lastSongNumber = parseInt(getLastSongNumber(currentSongIndex));
     var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
@@ -177,11 +173,7 @@ var previousSong = function() {
     // Set a new current song
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
-    // Update the Player Bar information
-    $('.currently-playing .song-name').text(currentSongFromAlbum.name);
-    $('.currently-playing .artist-name').text(currentAlbum.artist);
-    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " + currentAlbum.name);
-    $('.main-controls .play-pause').html(playerBarPauseButton);
+    updatePlayerBarSong();
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
     var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
@@ -217,14 +209,12 @@ var albumImage = document.getElementsByClassName('album-cover-art')[0];
      
 index = 1;
 var albums = [albumPicasso, albumMarconi, albumBeachHouse];
-
-albumImage.addEventListener('click', function(event) {
+    albumImage.addEventListener('click', function(event) {
     setCurrentAlbum(albums[index]);
     index++;
-    if (index == albums.length) {
+    if (index == albums.length ) {
         index = 0;}
-}
-        );
+});
      
      
 
