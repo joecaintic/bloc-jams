@@ -15,6 +15,13 @@ var setSong = function(songNumber) {
     setVolume(currentVolume);
 };
 
+//Assignment bullet 3
+var filterTimeCode = function(timeInSeconds) {
+    var timeToChange = parseFloat(timeInSeconds);
+    var roundedTime = Math.floor(timeToChange);
+    return buzz.toTimer(roundedTime);
+};
+
  var seek = function(time) {
      if (currentSoundFile) {
          currentSoundFile.setTime(time);
@@ -36,7 +43,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         '<tr class="album-view-song-item">'
     + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
  
@@ -74,7 +81,7 @@ var clickHandler = function() {
             }
     }
 };
-    
+        
    var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberCell.attr('data-song-number'));
@@ -125,6 +132,11 @@ var clickHandler = function() {
      }
  };
 
+    //Assignment bullet 1
+var setCurrentTimeInPlayerBar = function(currentTime) {
+    $(this).find('.current-time').text(filterTimeCode(currentTime));
+};
+
  var updateSeekBarWhileSongPlays = function() {
      if (currentSoundFile) {
          // #10
@@ -134,6 +146,7 @@ var clickHandler = function() {
              var $seekBar = $('.seek-control .seek-bar');
  
              updateSeekPercentage($seekBar, seekBarFillRatio);
+             setCurrentTimeInPlayerBar(this.getTime());
          });
      }
  };
@@ -200,8 +213,13 @@ var setupSeekBars = function() {
      return album.songs.indexOf(song);
  };
 
-    var updatePlayerBarSong = function() {
+//Assignment bullet 2
+var setTotalTimeInPlayerBar = function(totalTime) {
+    $('.total-time').text(filterTimeCode(totalTime));
+};
 
+    var updatePlayerBarSong = function() {
+        setTotalTimeInPlayerBar(currentSongFromAlbum.length);
         $('.currently-playing .song-name').text(currentSongFromAlbum.name);
         $('.currently-playing .artist-name').text(currentAlbum.artist);
         $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + " - " + currentAlbum.artist);
