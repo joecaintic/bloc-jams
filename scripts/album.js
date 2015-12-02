@@ -134,7 +134,7 @@ var clickHandler = function() {
 
     //Assignment bullet 1
 var setCurrentTimeInPlayerBar = function(currentTime) {
-    $(this).find('.current-time').text(filterTimeCode(currentTime));
+    $('.current-time').text(filterTimeCode(currentTime));
 };
 
  var updateSeekBarWhileSongPlays = function() {
@@ -146,7 +146,7 @@ var setCurrentTimeInPlayerBar = function(currentTime) {
              var $seekBar = $('.seek-control .seek-bar');
  
              updateSeekPercentage($seekBar, seekBarFillRatio);
-             //setCurrentTimeInPlayerBar('timeupdate');
+             setCurrentTimeInPlayerBar(this.getTime());
          });
      }
  };
