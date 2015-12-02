@@ -146,7 +146,7 @@ var setCurrentTimeInPlayerBar = function(currentTime) {
              var $seekBar = $('.seek-control .seek-bar');
  
              updateSeekPercentage($seekBar, seekBarFillRatio);
-             setCurrentTimeInPlayerBar(this.getTime());
+             //setCurrentTimeInPlayerBar('timeupdate');
          });
      }
  };
